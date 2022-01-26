@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <title>NetClip</title>
+</head>
+
+<body>
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light text-dark shadow-sm">
+        <a class="navbar-brand " href="#">
+            <img src="/assets/pic/NetClip3.png" width="36" height="30" class="d-inline-block align-top" alt="">
+            NetClip
+        </a>
+        <ul class="nav justify-content-end ">
+
+            <li class="nav-item ">
+
+
+            </li>
+
+            <li class="nav-item d-inline-flex ">
+                <div class="justify-content-center d-flex p-2">
+                    有效期:
+                </div>
+                <select class="custom-select btn-outline-primary form-control" form="userClipForm" id="ddl_location"
+                    name="clipExpire" style="width: auto">
+
+                </select>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> </a>
+            </li>
+            <li class="nav-item">
+                <form method="post" action="/s" id="userClipForm" name="userClipForm">
+                    <input type="hidden" name="username" value={{.username}} />
+                    <input type="hidden" name="password" value={{.password}} />
+
+                    <button type="submit" class="btn btn-outline-primary text-nowrap">保存</button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> </a>
+            </li>
+            <li class="nav-item">
+                <form method="post" action="/d">
+                    <input type="hidden" name="username" value={{.username}} />
+                    <input type="hidden" name="password" value={{.password}} />
+                    <button type="submit" class="btn btn-outline-danger text-nowrap" id="deleteUser">删除</button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> </a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    </br>
+    </br>
+
+    <div class="container-md">
+        <div class="row justify-content-center">
+            <label for="clipContent">内容:</label>
+            <textarea class="form-control col-md-8 overflow-auto" rows="15" name="clipText" form="userClipForm"
+                contenteditable="plaintext-only" placeholder="请输入文本内容">{{.clipText}}</textarea>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#deleteUser").click(function () {
+                if (confirm("确定删除该条剪贴板？")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+    </script>
+    <script>
+        var jsonData = ["1周", "1天", "3天", "1月"];
+
+        for (var i = 0; i < jsonData.length; i++) {
+            $("#ddl_location").append('<option value="' + jsonData[i] + '">' + jsonData[i] + '</option>');
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>

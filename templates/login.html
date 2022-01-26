@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="/assets/pic/favicon.ico">
+                    
+  <title>NetClip</title>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-light bg-light text-dark shadow-sm py-2">
+    <a class="navbar-brand " href="#">
+      <img src="/assets/pic/NetClip3.png" width="36" height="30" class="d-inline-block align-top" alt="">
+      NetClip
+    </a>
+
+  </nav>
+
+
+  <form action="/login" method="post" class="form-horizontal  mb-2 text-center">
+    </br>
+    </br>
+
+    <!--<img class="mb-4" src="/assets/pic/NetClip2.png" alt="" width="72" height="72">-->
+    <h1 class="h5 mb-3 font-weight-normal text-center">在线剪贴板</h1>
+    <div class="row justify-content-center">
+      <label for="inputUsename" class="control-lable "></label>
+      <div class="col-md-3">
+        <input type="text" id="inputUsername" name="username" class="form-control mb-3 " placeholder="剪贴板名称" required=""
+          autofocus="">
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <label for="inputPassword" class="control-lable"></label>
+      <div class="col-md-3 ">
+        <input type="password" id="inputPassword" name="password" class="form-control mb-3" placeholder="剪贴板密码"
+          required="">
+      </div>
+    </div>
+
+    <button class="btn btn-md btn-primary btn-block mb-5" type="submit" id="submitBtn" value="submit">开始</button>
+
+  </form>
+
+  <div class="container">
+    <hr>
+    <h4>NetClip简介</h4>
+    <p>在线剪贴板NetClip，顾名思义，是一个提供在线文本存储服务的小工具，你可以将需要用到的网页链接、文章段落等暂时存储在NetClip中，
+      以便在其他设备上随时读取</p>
+    <br>
+    <h4>使用说明:</h4>
+    <dl>
+      <dt>进入编辑页面：</dt>
+      <dd>- 你可以从ClipNet主页<mark>链接</mark>通过注册或登陆按钮进入到编辑页面使用 </dd>
+      <dd>- 也可以从个人页面的URL<mark>链接</mark>直接进入到编辑页面，其中clip为你的剪贴板名字，password为你的剪贴板密码 </dd>
+      <dt>设定存储时间：</dt>
+      <dd>- 剪贴板的默认保存时间为30天，可以按需改为7天或1天</dd>
+      <dt>删除剪贴板：</dt>
+      <dd>- 可以为通过点击剪贴板页面的删除按钮随时删除你的剪贴板记录</dd>
+    </dl>
+  </div>
+
+  <div class="container-fluid bg-secondary mt-5 pt-4 pb-5 footer">
+    <footer>
+
+      <div class="text-center">
+        <img src="/assets/pic/NetClip3.png" width="36" height="30" class="float-center" alt="">
+      </div>
+      <div class="container pt-2">
+        <div class="text-center">
+          <p class="text-light">NetClip -- 简单好用的文本传输工具：）</p>
+        </div>
+      </div>
+      <div class="row">
+        <ul class="list-inline text-center mt-6">
+          <li class="list-inline-item link-light"><a class="fab fa-github text-center link-light" target="_blank"
+              href="#">GitHub</a></li>
+          <li class="list-inline-item link-light"><a class="fas fa-blog text-center link-light" target="_blank"
+              href="#">Blog</a>
+          </li>
+          <li class="list-inline-item link-light"><a class="fas fa-clipboard-check text-center link-light"
+              target="_blank" href="#">留个建议</a>
+          </li>
+          <li>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <p class="text-light">Copyright © 2022 NetClip. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+
+
+
+</body>
+
+</html>
