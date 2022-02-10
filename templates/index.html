@@ -6,39 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link href="/assets/css/all.css" rel="stylesheet">
+    <!--load all styles -->
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/qrcode.min.js"></script>
+    <link rel="shortcut icon" href="/assets/pic/favicon.ico">
+
+
     <title>NetClip</title>
 </head>
 
 <body>
     <!-- Image and text -->
-    <nav class="navbar navbar-light bg-light text-dark shadow-sm">
-        <a class="navbar-brand " href="#">
+    <nav class="navbar navbar-light bg-light text-dark shadow-sm py-2">
+        <a class="navbar-brand " href="login/">
             <img src="/assets/pic/NetClip3.png" width="36" height="30" class="d-inline-block align-top" alt="">
             NetClip
         </a>
-        <ul class="nav justify-content-end ">
-
-            <li class="nav-item ">
+        <ul class="nav justify-content-end p-1">
 
 
-            </li>
-
-            <li class="nav-item d-inline-flex ">
-                <div class="justify-content-center d-flex p-2">
-                    有效期:
+            <li class="nav-item d-inline-flex p-1">
+                <div class="justify-content-center d-flex p-2 ">
+                    设置有效期:
                 </div>
-                <select class="custom-select btn-outline-primary form-control" form="userClipForm" id="ddl_location"
-                    name="clipExpire" style="width: auto">
+                <select class="custom-select  form-control" form="userClipForm" id="ddl_location" name="clipExpire"
+                    style="width: auto">
 
                 </select>
 
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"> </a>
-            </li>
-            <li class="nav-item">
+
+            <li class="nav-item p-1">
                 <form method="post" action="/s" id="userClipForm" name="userClipForm">
                     <input type="hidden" name="username" value={{.username}} />
                     <input type="hidden" name="password" value={{.password}} />
@@ -46,19 +46,18 @@
                     <button type="submit" class="btn btn-outline-primary text-nowrap">保存</button>
                 </form>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"> </a>
+            <li class="nav-item p-1">
+                <input type="button" class="btn btn-outline-primary text-nowrap" onClick="jsCopy();" value="复制" />
             </li>
-            <li class="nav-item">
+
+            <li class="nav-item p-1">
                 <form method="post" action="/d">
                     <input type="hidden" name="username" value={{.username}} />
                     <input type="hidden" name="password" value={{.password}} />
                     <button type="submit" class="btn btn-outline-danger text-nowrap" id="deleteUser">删除</button>
                 </form>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"> </a>
-            </li>
+
         </ul>
     </nav>
 
@@ -67,12 +66,92 @@
     </br>
     </br>
 
-    <div class="container-md">
-        <div class="row justify-content-center">
-            <label for="clipContent">内容:</label>
-            <textarea class="form-control col-md-8 overflow-auto" rows="15" name="clipText" form="userClipForm"
-                contenteditable="plaintext-only" placeholder="请输入文本内容">{{.clipText}}</textarea>
+    <div class="container-fluid p-1">
+        <div class="row">
+            <div class="col-lg-10">
+                <span class="h5 text-muted font-weight-bold m-1 lead">剪贴板内容：</span>
+                <textarea class="form-control overflow-auto border rounded-0 lead" style="border: none;box-shadow:none"
+                    rows="20" name="clipText" form="userClipForm" contenteditable="plaintext-only" id="cliptextcontent"
+                    placeholder="请输入文本内容">{{.clipText}}</textarea>
+
+
+            </div>
+            <div class="col-lg-2 ">
+                <span class="h5 text-muted font-weight-bold m-1 lead">详情：</span>
+                <div class="border rounded-0 m-1">
+                    <dl class="no-bullet m-1">
+                        <dt>
+                            <b>字数统计:</b>
+                        <dd>
+                            <span class="text-success ">{{.clipTextLength}}</span>
+                        </dd>
+                        </dt>
+                        <dt>
+                            <b>创建时间:</b>
+                        <dd>
+                            <span class="text-success">{{.startAt}}</span>
+                        </dd>
+                        </dt>
+                        <dt>
+                            <b>最后修改时间:</b>
+                        <dd>
+                            <span class="text-success">{{.updateAt}}</span>
+                        </dd>
+                        </dt>
+                        </ul>
+                </div>
+
+                <br>
+                <div class="row justify-content-center">
+                    <div class="row justify-content-center">
+                        <span class="text-muted font-weight-bold">扫码在手机上编辑</span>
+                    </div>
+                    <div class="row">
+                        <div class="" id="qrcode"></div>
+                    </div>
+                    <br>
+
+
+                </div>
+            </div>
+
+
         </div>
+
+    </div>
+    </div>
+
+    <div class="container-fluid bg-secondary mt-5 pt-4 pb-5 footer">
+        <footer>
+
+            <div class="text-center">
+                <img src="/assets/pic/NetClip3.png" width="36" height="30" class="float-center" alt="">
+            </div>
+            <div class="container pt-2">
+                <div class="text-center">
+                    <p class="text-light">NetClip -- 简单好用的文本传输工具：）</p>
+                </div>
+            </div>
+            <div class="row">
+                <ul class="list-inline text-center mt-6">
+                    <li class="list-inline-item link-light"><a class="fab fa-github text-center link-light"
+                            target="_blank" href="https://github.com/ZevaXu/NetClip">GitHub</a></li>
+                    <li class="list-inline-item link-light"><a class="fas fa-blog text-center link-light"
+                            target="_blank" href="https://zevaxu.github.io">Blog</a>
+                    </li>
+                    <!-- <li class="list-inline-item link-light"><a class="fas fa-clipboard-check text-center link-light"
+                            target="_blank" href="#">留个建议</a>
+                    </li> -->
+                    <li>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p class="text-light">Copyright © 2022 NetClip. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
@@ -87,12 +166,30 @@
         });
     </script>
     <script>
-        var jsonData = ["1周", "1天", "3天", "1月"];
+        var jsonData = ["一周", "一天", "三天", "一月"];
 
         for (var i = 0; i < jsonData.length; i++) {
             $("#ddl_location").append('<option value="' + jsonData[i] + '">' + jsonData[i] + '</option>');
         }
     </script>
+    <script>
+        const qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: window.location.href,
+            width: 128,
+            height: 128,
+            colorDark: '#000',
+            colorLight: '#fff',
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
+    <script type="text/javascript">
+        function jsCopy() {
+            var e = document.getElementById("cliptextcontent");//对象是contents 
+            e.select(); //选择对象 （全选）
+            document.execCommand("Copy"); //执行浏览器复制命令
+        } 
+    </script>
+
 
 
 
