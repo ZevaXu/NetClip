@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  mysqldb:
+    image: mysql/mysql-server:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'your-db-name'
+      MYSQL_USER: 'your-user-name'
+      MYSQL_PASSWORD: 'your-password'
+      MYSQL_ROOT_PASSWORD: 'your-password'
+      TZ: 'Asia/Shanghai'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - './mysql-data/db:/var/lib/mysql'
+      - './mysql-data/my.cnf:/etc/my.cnf'
+      - './mysql-data/my1.cnf:/etc/mysql/my.cnf'
+  netclip_web:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ".:/app"
+    depends_on:
+      - mysqldb
+    links:
+      - "mysqldb:database"
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']

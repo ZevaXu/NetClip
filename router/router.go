@@ -12,6 +12,7 @@ func Start() {
 	e.LoadHTMLGlob("templates/*")
 	e.Static("/assets", "./assets")
 
+	e.GET("/", controller.Login)
 	e.GET("/login", controller.Login)
 	e.POST("/login", controller.AddUser)
 
