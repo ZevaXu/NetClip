@@ -1,7 +1,7 @@
 # NetClip
 
 ## 介绍
-用Go语言开发的在线剪贴板项目，后端使用[Gin](https://gin-gonic.com）框架，前端使用[Bootsrap](https://getbootstrap.com)框架(之前没学过前端，本项目的页面是现学现写的),数据库使用[Mysql](https://www.mysql.com/)，采用[Gorm](https://gorm.io)框架与数据库交互。
+用Go语言开发的在线剪贴板项目，后端使用[Gin](https://gin-gonic.com)框架，前端使用[Bootsrap](https://getbootstrap.com)框架(之前没学过前端，本项目的页面是现学现写的),数据库使用[Mysql](https://www.mysql.com/)，采用[Gorm](https://gorm.io)框架与数据库交互。
 
 ## 主要功能
 提供一个在线的文本编辑、文本分享和文本暂存服务的web小工具，实现跨平台、跨设备的文本分享和暂存服务。
