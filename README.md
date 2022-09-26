@@ -11,6 +11,12 @@
 ## Demo
 https://www.netclip.site
 
+## 部分截图
+1. 剪贴板创建页面
+![20220926-2310-7rIeZI|550](https://cdn.jsdelivr.net/gh/ZevaXu/picupload@master/uPic/20220926-2310-7rIeZI%7C550.png)
+2. 剪贴板编辑页面
+![20220926-2309-xtAbb6|550](https://cdn.jsdelivr.net/gh/ZevaXu/picupload@master/uPic/20220926-2309-xtAbb6%7C550.png)
+
 ## 部署
 1. 修改.env文件，添加数据库连接信息。
 2. 使用docker-compose.yml文件和Dockerfile文件部署项目。
